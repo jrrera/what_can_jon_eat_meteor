@@ -10,11 +10,14 @@
       <p class="lead">Jon is currently eating <strong>{{ currentDiet }}</strong></p>
     </div>
   </div>
-  {{#if foodsList}}
 
+  {{#each foodsList}}
+    {{ name }}
+  {{/each}}
+
+  {{#if foodsList}}
     <div class="row flex-center search-container">
       {{> foodSearch }}
-      <!-- <food-search [foods]="foodsList" (updateFood)="onSelection($event)"></food-search> -->
     </div>
 
     {{#with selectedFood}}
