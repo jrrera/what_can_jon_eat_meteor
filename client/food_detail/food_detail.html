@@ -1,0 +1,25 @@
+<template name="foodDetail">
+  <div class="row flex-center flex-column">
+    <!-- [class.food-yes]="food.canEat" [class.food-no]="!food.canEat" -->
+    <div class="food-details {{#if canEat}}food-yes{{else}}food-no{{/if}}">
+      {{#if canEat}}
+        <h1>Yes!</h1>
+      {{else}}
+        <h1>No :(</h1>
+      {{/if}}
+    </div>
+    {{#if suggestions}}
+      <div class="food-suggestion-wrapper">
+       <hr />
+        May I instead suggest:
+        <ul>
+          {{#each suggestions}}
+          <li class="food-suggestion">
+            {{ name }}
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+    {{/if}}
+  </div>
+</template>
