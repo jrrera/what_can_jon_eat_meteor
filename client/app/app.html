@@ -1,0 +1,21 @@
+<template name="app">
+  <div class="container full-stretch">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-4">
+        <h1>What Can Jon Eat?</h1>
+        <p class="lead">Jon is currently eating <strong>{{ currentDiet }}</strong></p>
+      </div>
+    </div>
+
+    {{#if foodsList}}
+      <div class="row flex-center search-container">
+        {{> foodSearch }}
+      </div>
+
+      {{#with selectedFood}}
+        {{> foodDetail }}
+      {{/with}}
+
+    {{/if}}
+  </div>
+</template>

@@ -1,6 +1,10 @@
+/**
+ * @fileoverview
+ * Core functionality for syncing db with Google Spreadsheet. Should be kept in
+ * lib/ directory for proper load order.
+ */
 
-
-function syncWithGoogleSpreadsheet() {
+syncWithGoogleSpreadsheet = function() {
   let key = '1JwIXaeatd7JrLMNDNtZWND1bPjupsLaJZluLDwKdOOM';
   Meteor.call('spreadsheet/fetch', key);
 
@@ -25,18 +29,3 @@ function syncWithGoogleSpreadsheet() {
   Meteor.wrapAsync(bulk.execute)();
   return 'Foods processed: ' + count;
 }
-
-
-SyncedCron.add({
-  name: 'Sync with Jon\'s foods spreadsheet',
-  schedule: function(parser) {
-    // parser is a later.parse object
-    return parser.text('on the first day of the week');
-  },
-  job: function() {
-    return syncWithGoogleSpreadsheet();
-  }
-});
-
-
-SyncedCron.start();
